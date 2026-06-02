@@ -1,29 +1,22 @@
 # Dependencies
 node_modules/
 
-# Build outputs
+# Build output
 dist/
 dist-electron/
 release/
 
-# Logs
+# Temp files
+package.json.tmp
 *.log
 
-# Environment
-.env
-.env.local
-.env.*.local
-
-# OS
+# OS files
 .DS_Store
 Thumbs.db
 
 # IDE
 .vscode/
 .idea/
-*.swp
-*.swo
 
-# Temporary
-*.tmp
-*.temp
+# Pnpm
+.pnpm-store/

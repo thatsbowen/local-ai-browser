@@ -1,49 +1,44 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import vue from '@vitejs/plugin-vue'
 import electron from 'vite-plugin-electron'
-import electronRenderer from 'vite-plugin-electron-renderer'
-import path from 'path'
+import renderer from 'vite-plugin-electron-renderer'
+import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [
-    react(),
+    vue(),
     electron([
       {
-        entry: 'src/main/index.ts',
-        onstart(args) {
-          args.startup()
-        },
+        entry: 'electron/main.ts',
         vite: {
           build: {
-            outDir: 'dist-electron/main',
+            outDir: 'dist-electron',
             rollupOptions: {
-              external: ['electron', 'better-sqlite3', 'electron-store']
+              external: ['electron', 'better-sqlite3']
             }
           }
         }
       },
       {
-        entry: 'src/preload/index.ts',
-        onstart(args) {
-          args.reload()
+        entry: 'electron/preload.ts',
+        onstart(options) {
+          options.reload()
         },
         vite: {
           build: {
-            outDir: 'dist-electron/preload',
-            rollupOptions: {
-              external: ['electron']
-            }
+            outDir: 'dist-electron'
           }
         }
       }
     ]),
-    electronRenderer()
+    renderer()
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': resolve(__dirname, 'src')
     }
   },
+  base: './',
   build: {
     outDir: 'dist',
     emptyOutDir: true

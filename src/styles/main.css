@@ -1,0 +1,110 @@
+:root {
+  --bg-primary: #F5F7FA;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #EEF2F7;
+  --border-color: #D0D8E4;
+  --text-primary: #1A202C;
+  --text-secondary: #4A5568;
+  --text-muted: #888888;
+  --accent-blue: #4A90E2;
+  --accent-blue-hover: #357ABD;
+  --accent-ai: #00D4FF;
+  --success: #28C840;
+  --danger: #FF5F57;
+  --warning: #FEBC2E;
+  --shadow-sm: 0 1px 3px rgba(74, 144, 226, 0.08);
+  --shadow-md: 0 4px 12px rgba(74, 144, 226, 0.12);
+  --shadow-lg: 0 8px 24px rgba(74, 144, 226, 0.16);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+  user-select: none;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+input, textarea {
+  font-family: inherit;
+  outline: none;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent-blue);
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Utility */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.p-2 { padding: 8px; }
+.p-3 { padding: 12px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }
+.text-sm { font-size: 12px; }
+.text-muted { color: var(--text-muted); }
+.font-bold { font-weight: 600; }
