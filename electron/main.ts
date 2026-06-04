@@ -2,6 +2,13 @@ import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import * as path from 'path'
 import Store from 'electron-store'
 
+// 阻止外部 ffmpeg.dll 干扰 Electron 内置 libffmpeg
+// 解决 "av_stream_get_side_data" 找不到入口点的版本冲突问题
+process.env.PATH = (process.env.PATH || '')
+  .split(path.delimiter)
+  .filter(dir => !dir.toLowerCase().includes('ffmpeg'))
+  .join(path.delimiter)
+
 interface Bookmark {
   id: number
   title: string
